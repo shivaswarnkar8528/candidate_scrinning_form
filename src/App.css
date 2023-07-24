@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.questionField {
+  margin-left: 10px;
+  line-height: 30px;
+}
+.test_title {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  height: 3rem;
+  width: 90%;
+  margin: 0px auto;
+}
+.test_name_label,
+.test_type_label,
+.manageBy_label,
+.screeningType_label,
+.totalnoq {
+  font-size: 20px;
+}
+.test_type_field,
+.totalNumberfield {
+  height: 2.6em;
+  width: 39.2em;
+  border-radius: 5px;
+  border: 1px solid rgb(202, 194, 194);
+}
+.Answeroptionsfields{
+  height: 2.6em;
+  width: 20.2em;
+  border-radius: 5px;
+  border: 1px solid rgb(202, 194, 194);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.select_test_type,
+.managedBy_field,
+.screeningType_field,
+.totalNoQuField {
+  width: 33em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.submit_btn {
+  height: 2.5em;
+  width: 14em;
+  margin-top: 1em;
+  background-color: blue;
+  border-radius: 5px;
+  font-size: 1em;
   color: white;
+  border: none;
 }
-
-.App-link {
-  color: #61dafb;
+.final_Submit_btn {
+  height: 2.5em;
+  width: 14em;
+  margin-left: 5.2rem;
+  margin-top: 1em;
+  border-radius: 5px;
+  font-size: 1em;
+  color: white;
+  border: none;
+  background-color: gray;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.radio_mcq {
+  position: absolute;
+  left: 38em;
+  top: 14.5em;
+}
+.plus_btn {
+  font-size: 40px;
+  color: rgb(132, 189, 45);
+  position: relative;
+  top: 12px;
+  left: 10px;
 }

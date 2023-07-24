@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "technology": "python",
+      "question_type": "descriptive",
+      "question_level": "intermediate",
+      "title": "when python invented",
+      "id": 1
+    },
+    {
+      "technology": "react",
+      "question_type": "mcq",
+      "question_level": "intermediate",
+      "title": "what is most known use of React",
+      "questions": "",
+      "id": 2
+    }
+  ]
+}

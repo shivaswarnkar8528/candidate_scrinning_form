@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-
+import MainForm from './Components/MainForm';
 function App() {
+  const [mainRender,setMainRender]=useState([""]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <div className='test_title'>Condidate Screening Test Creation </div>
+    <hr/><br/>
+    {
+      mainRender.length>0?(mainRender.map((ele,index)=>{
+        return(
+          <div key={index}>{<MainForm setMainRender={setMainRender} mainRender={mainRender}/>} <br/> <hr/></div>
+        )
+      })):("")
+    }
+   </>
   );
 }
 

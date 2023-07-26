@@ -8,11 +8,11 @@ function App() {
    <div className='test_title'>Condidate Screening Test Creation </div>
     <hr/><br/>
     {
-      mainRender.length>0?(mainRender.map((ele,index)=>{
+     mainRender.map((ele,index)=>{
         return(
           <div key={index}>{<MainForm setMainRender={setMainRender} mainRender={mainRender}/>} <br/> <hr/></div>
         )
-      })):("")
+      })
     }
    </>
   );

@@ -204,17 +204,7 @@ console.log(technology,question_type);
         <PredifinedQuestionsTable addQuestions={addQuestions} rows={rows} setRowsdata={setRowsdata} clear={clear}/>
       </div>
 
-      <div>
-        <button onClick={(e) => e.preventDefault()} className="submit_btn">
-          Submit Condidate Test
-        </button>
-        <button
-          onClick={(e) => e.preventDefault()}
-          className="final_Submit_btn"
-        >
-          Final Submit
-        </button>
-      </div>
+     
     </div>
   );
 }

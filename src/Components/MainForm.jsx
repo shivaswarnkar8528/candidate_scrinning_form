@@ -8,26 +8,33 @@ import SelectTypeCreatable from "./SelectTypeCreatable";
 import QuestionSelection from "./QuestionSelection";
 
 const MainForm = ({setMainRender,mainRender}) => {
+
   
   const [testData, setTestData] = useState({
-    "managedBY": "candidate",
-    "totalQuestions": 0,
+    "managedBY": "",
+    "totalQuestions": null,
     "randomQuestionDetails": {
         "questions":null,
         "technology": [],
-        "programmming":0,
-        "mcq":0
+        "programming":0,
+        "mcq":null
     },
     "predefinedQuestionDetails": {  
-        "questionCount":0,
+        "questionCount":null,
         "technology":[],
         "questionType": []
     },
     "test_name": "",
     "testType": "",
-    "isMcq": true,
+    "isMcq":"true",
     "screeningType": ""
 });
+
+let flag=Object.values(testData).every((val)=>Boolean(val)!=false) && Object.values(testData.predefinedQuestionDetails).every((val)=>Boolean(val)!=false) && Object.values(testData.randomQuestionDetails).every((val)=>Boolean(val)!=false);
+console.log(flag);
+let flag2=Object.values(testData).every((val)=>Boolean(val)!=false);
+
+
   const TotalQuestionHandle=(e)=>{
     if(e.target.value<0){
       alert("Enter Positive number");
@@ -40,7 +47,7 @@ const MainForm = ({setMainRender,mainRender}) => {
       });
     }
   }
-  // console.log(testData);
+  console.log(testData);  
   return (
     <>
     
@@ -58,7 +65,7 @@ const MainForm = ({setMainRender,mainRender}) => {
           />
 
           <span className="plus_btn">
-            <MdAddCircleOutline onClick={()=>setMainRender([...mainRender,""])}/>
+            <MdAddCircleOutline onClick={()=>setMainRender((prev)=>[...prev,""])}/>
           </span>
         </div>
         <div className="select_test_type">
@@ -77,10 +84,10 @@ const MainForm = ({setMainRender,mainRender}) => {
             <Label label={"Is MCQ"} /> 
             &nbsp;
             {
-              testData?.managedBY=="agent"?<>{"Yes "} <input name="type" checked disabled type="radio"/>{" No "} <input disabled name="type" type="radio"/></>:<>{"Yes "} <input name="type" onClick={(e) => {
-                setTestData({ ...testData, isMcq: true });
+              testData.managedBY=="agent"?<>{"Yes "} <input name="type" checked disabled type="radio"/>{" No "} <input disabled name="type" type="radio"/></>:<>{"Yes "} <input name="type" onClick={(e) => {
+                setTestData({ ...testData, isMcq: "true" });
               }} type="radio"/>{" No "} <input name="type" type="radio" onClick={(e) => {
-                setTestData({ ...testData, isMcq: false });
+                setTestData({ ...testData, isMcq: "false" });
               }}/></>
             }
           </span>
@@ -103,12 +110,19 @@ const MainForm = ({setMainRender,mainRender}) => {
           />
         </div>
         <div>
-          {testData.totalQuestions ? (
+          {testData.totalQuestions && flag2 ? (
             <QuestionSelection testData={testData} setTestData={setTestData} />
           ) : (
             ""
           )}
         </div>
+        { flag==false?<div>
+              <button disabled className="submit_btn submit_btn-disable">Submit Condidate Test</button>
+              <button disabled className="final_Submit_btn">Final Submit</button>
+         </div>:<div>
+              <button  className="submit_btn">Submit Condidate Test</button>
+              <button  className="final_Submit_btn">Final Submit</button>
+         </div>}
       </form>
     </>
   );

@@ -14,6 +14,23 @@
       "title": "what is most known use of React",
       "questions": "",
       "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "technology": "javascript",
+      "question_type": "descriptive",
+      "question_level": "intermediate",
+      "title": "gyuhgil",
+      "id": 4
+    },
+    {
+      "technology": "javascript",
+      "question_type": "descriptive",
+      "question_level": "beginner",
+      "title": "hgfhtfghy",
+      "id": 5
     }
   ]
 }

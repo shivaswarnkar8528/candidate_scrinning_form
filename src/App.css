@@ -53,6 +53,10 @@
   color: white;
   border: none;
 }
+.submit_btn-disable{
+  background-color: rgba(22, 22, 167, 0.842);
+
+}
 .final_Submit_btn {
   height: 2.5em;
   width: 14em;

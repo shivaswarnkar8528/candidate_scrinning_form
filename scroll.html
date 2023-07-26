@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container .chat {
+        height: 500px;
+        width: 350px;
+        background-color: rgb(238, 241, 243);
+        border: 1px solid;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+      .container .chat p {
+        background-color: rgb(0, 3, 194);
+        border-radius: 5px;
+        min-height: 30px;
+        margin: 10px;
+        min-width: 10px;
+        color: rgb(255, 255, 255);
+        border: none;
+        display: inline-block;
+        padding: 5px;
+        line-height: 40px;
+      }
+      .container .chat .right p{
+        background-color: rgb(65, 161, 0);
+      }
+      .right {
+        display: flex;
+        justify-content: flex-end; 
+      }
+     
+      .chat {
+        overflow-y: scroll;
+      }
+      .chat::-webkit-scrollbar {
+        width: 5px;
+      }
+      .chat::-webkit-scrollbar-thumb{
+        background-color: rgba(0, 0, 0, 0.726);
+      }
+      input{
+        width: 265px;
+      }
+      .input-outer{
+        border-radius: 10px;
+      }
+    </style>
+  
+  </head>
+  <body>
+   <div class="container">
+    <div >
+        <div class="chat" id="messagetext">
+          <div><p class="left">hello! Welcome </p></div>
+        
+        </div>
+        <div class="input-outer">
+          <input id="chatbox" onkeydown="changeMsg(event)" type="text" style="padding: 10px;"> <button onclick="send1()" style="padding: 10px; background-color: black; color: white;">Send</button>
+        </div>
+      </div>
+   </div>
+
+
+
+    <script>
+        let chatScroll=document.getElementById("messagetext");
+          let msg="";let side="right"
+          function changeMsg(e){
+            msg=e.target.value;
+          }
+        function send1(){
+          if(msg==""){
+            return;
+          }
+          let ele=document.getElementById("messagetext").innerHTML+=`<div class="${side}"><p>${msg}</p></div>`
+          msg="";
+        chatScroll.scrollTop=chatScroll.scrollHeight;
+        document.getElementById("chatbox").value = "";
+
+        if(side=="right"){
+          side="left";
+        }
+        else{
+          side="right";
+        }
+
+        }
+    </script>
+  </body>
+</html>

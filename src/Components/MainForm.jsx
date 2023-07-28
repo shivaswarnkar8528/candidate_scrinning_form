@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { createContext, memo, useContext, useState } from "react";
 import Label from "./Label";
 import { ManagedBy } from "./selectData";
 import { ScreeningType } from "./selectData";
@@ -7,9 +7,11 @@ import { MdAddCircleOutline } from "react-icons/md";
 import SelectTypeCreatable from "./SelectTypeCreatable";
 import QuestionSelection from "./QuestionSelection";
 
+export const context=createContext();
+
 const MainForm = ({setMainRender,mainRender}) => {
 
-  
+  let data=useContext(context);
   const [testData, setTestData] = useState({
     "managedBY": "",
     "totalQuestions": null,
@@ -49,7 +51,7 @@ let flag2=Object.values(testData).every((val)=>Boolean(val)!=false);
   }
   console.log(testData);  
   return (
-    <>
+    <context.Provider value={{testData,setTestData}}>
     
       <form className="container questionField">
       <div className="test_name">
@@ -120,11 +122,11 @@ let flag2=Object.values(testData).every((val)=>Boolean(val)!=false);
               <button disabled className="submit_btn submit_btn-disable">Submit Condidate Test</button>
               <button disabled className="final_Submit_btn">Final Submit</button>
          </div>:<div>
-              <button  className="submit_btn">Submit Condidate Test</button>
-              <button  className="final_Submit_btn">Final Submit</button>
+              <button onClick={(e)=>{e.preventDefault();console.log(testData);}}  className="submit_btn">Submit Condidate Test</button>
+              <button onClick={(e)=>{e.preventDefault();console.log(testData);}}  className="final_Submit_btn">Final Submit</button>
          </div>}
       </form>
-    </>
+    </context.Provider>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Label from "./Label";
 import Input from "../Field/Input";
 import { testTechnologyOption, testTypeOptions } from "./selectData";
@@ -6,7 +6,13 @@ import Select from "react-select";
 import PredifinedQuestionsTable from "./PredifinedQuestionsTable";
 import AddQuestions from "./AddQuestions";
 import axios from "axios";
-function PredefinedQuestion({ setTestData, testData }) {
+import { context } from "./MainForm";
+
+function PredefinedQuestion() {
+
+  //fetching main data using context api
+  let data = useContext(context);
+  let { testData, setTestData } = data;
   const [addQuestions, setAddQuestions] = useState({});
   const [addModal, setAddModal] = useState(false);
   const [rows, setRowsdata] = useState([]);
@@ -63,33 +69,20 @@ function PredefinedQuestion({ setTestData, testData }) {
 
    const handleSearch = () => {
     const { technology, question_type } = testData.predefinedQuestionDetails;
-console.log(technology,question_type);
-    const technology1 =
-      technology?.length != 0 && technology[0]?.value;
-    const technology2 =
-      technology?.length === 2 && technology[1]?.value;
-    const question_type1 =
-      question_type?.length !== 0 && question_type[0]?.value;
-    const question_type2 =
-      question_type?.length === 2 && question_type[1]?.value;
+    console.log(technology,question_type);
+    const technology1 =technology?.length != 0 && technology[0]?.value;
+    const technology2 =technology?.length === 2 && technology[1]?.value;
+    const question_type1 =question_type?.length !== 0 && question_type[0]?.value;
+    const question_type2 =question_type?.length === 2 && question_type[1]?.value;
 
     if (question_type1) {
       if (question_type2 && technology2) {
-        axios
-          .get(
-            `http://localhost:5000/AddNewQuestion?technology=${technology1}&technology=${technology2}&question_type=${question_type1}&question_type=${question_type2}`
-          )
-          .then((resp) => {
-            setRowsdata(resp.data);
-          });
+        axios.get(`http://localhost:5000/AddNewQuestion?technology=${technology1}&technology=${technology2}&question_type=${question_type1}&question_type=${question_type2}`)
+          .then((resp) => { setRowsdata(resp.data);});
+
       } else if (question_type2 && technology1) {
-        axios
-          .get(
-            `http://localhost:5000/AddNewQuestion?technology=${technology1}&question_type=${question_type1}&question_type=${question_type2}`
-          )
-          .then((resp) => {
-            setRowsdata(resp.data);
-          });
+        axios.get(`http://localhost:5000/AddNewQuestion?technology=${technology1}&question_type=${question_type1}&question_type=${question_type2}`)
+          .then((resp) => {  setRowsdata(resp.data);});
       } else if (technology1 && technology2) {
         axios
           .get(

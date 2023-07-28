@@ -1,9 +1,12 @@
-import React, { memo, useState } from "react"
+import React, { memo, useContext, useState } from "react"
 import CreatableSelect from "react-select/creatable"
 import { testTechnologyOption } from "./selectData"
+import { context } from "./MainForm";
 
   
-function SelectTypeCreatable({setTestData,testData}) {
+function SelectTypeCreatable() {
+  let data = useContext(context);
+  let { testData, setTestData } = data;
     const [isLoading, setIsLoading] = useState(false)
     const [options, setOptions] = useState(testTechnologyOption)
     

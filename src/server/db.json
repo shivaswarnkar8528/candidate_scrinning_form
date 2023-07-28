@@ -31,6 +31,23 @@
       "question_level": "beginner",
       "title": "hgfhtfghy",
       "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "technology": "javascript",
+      "question_type": "descriptive",
+      "question_level": "beginner",
+      "title": "abc",
+      "id": 7
+    },
+    {
+      "technology": "python",
+      "question_type": "mcq",
+      "question_level": "beginner",
+      "title": "hfdkjshfgjsd",
+      "id": 8
     }
   ]
 }

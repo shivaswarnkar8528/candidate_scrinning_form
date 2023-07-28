@@ -37,6 +37,12 @@ function AddQuestions({ setAddModal,setAddQuestions }) {
     // console.log(addQuestionData);
     setAddQuestions(addQuestionData);
 
+    //delete option of addquestion
+    
+
+  }
+  const deleteOption=(index)=>{
+      setAnswerOptions(answerOptions.filter((val)=>val!=index));  
   }
 
   return (
@@ -87,18 +93,23 @@ function AddQuestions({ setAddModal,setAddQuestions }) {
               <MdAddCircleOutline
                 color="green"
                 fontSize={"20px"}
-                onClick={() =>
-                  answerOptions.length < 4
-                    ? setAnswerOptions([...answerOptions, ""])
-                    : null
-                }
+                onClick={() =>{
+                  function findMissing(arr) {
+                    for (let i = 1; i <= 4; i++)
+                        if (!arr.includes(i)) return i;
+                  }
+                  if(answerOptions.length < 4)
+                      setAnswerOptions([...answerOptions, findMissing(answerOptions)])
+                  else
+                     alert("max option executed!")
+               } }
               />
             </>
           ) : null}
           {addQuestionData?.["question_type"] === "mcq" && answerOptions.length > 0
             ? answerOptions.map((ele, index) => {
                 return (
-                  <div key={index}>
+                  <div key={ele}>
                     <Label label={`Answer Option (${index + 1})`} />
                     <div style={{ display: "flex" }}>
                       {" "}
@@ -109,7 +120,10 @@ function AddQuestions({ setAddModal,setAddQuestions }) {
                       />
                       <span style={{ fontSize: "12px" }}>
                         &emsp; Is Correct <input type="radio" name="option" />{" "}
-                        <AiOutlineMinusCircle size={"15px"} color="red" />
+                          <span onClick={()=>deleteOption(ele)}>
+                          <AiOutlineMinusCircle size={"15px"} color="red" />
+                          </span>
+                          
                       </span>
                     </div>
                   </div>
